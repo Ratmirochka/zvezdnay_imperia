@@ -3,9 +3,9 @@
 
 std::string Card::info() const {
     std::ostringstream ss;
-    ss << name << " (cost:" << cost
-       << " trade:" << trade
-       << " combat:" << combat
-       << " inf:" << influence << ")";
+    ss << name << " (Цена: " << cost
+       << " | Торговля: " << trade
+       << " | Атака: " << combat
+       << " | Влияние: " << influence << ")";
     return ss.str();
 }

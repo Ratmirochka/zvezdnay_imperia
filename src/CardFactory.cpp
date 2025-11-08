@@ -6,7 +6,7 @@ std::unique_ptr<Card> CardFactory::create(CardType t) {
     switch (t) {
         case CardType::Scout: {
             auto c = make_unique<Card>();
-            c->name = "Scout";
+            c->name = "Разведчик";
             c->cost = 0;
             c->trade = 1;
             c->combat = 0;
@@ -15,7 +15,7 @@ std::unique_ptr<Card> CardFactory::create(CardType t) {
         }
         case CardType::Fighter: {
             auto c = make_unique<Card>();
-            c->name = "Fighter";
+            c->name = "Истребитель";
             c->cost = 3;
             c->trade = 0;
             c->combat = 3;
@@ -24,7 +24,7 @@ std::unique_ptr<Card> CardFactory::create(CardType t) {
         }
         case CardType::TradeShip: {
             auto c = make_unique<Card>();
-            c->name = "TradeShip";
+            c->name = "Торговый корабль";
             c->cost = 4;
             c->trade = 4;
             c->combat = 0;
@@ -33,7 +33,7 @@ std::unique_ptr<Card> CardFactory::create(CardType t) {
         }
         case CardType::InfluenceCard: {
             auto c = make_unique<Card>();
-            c->name = "Influence";
+            c->name = "Влияние";
             c->cost = 5;
             c->trade = 0;
             c->combat = 0;
