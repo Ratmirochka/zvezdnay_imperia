@@ -3,6 +3,13 @@
 #include <iostream>
 #include <limits>
 
+// Singleton accessor: возвращает ссылку на единственный объект
+Game& Game::instance() {
+    static Game instance; // локальный статический объект — инициализируется один раз
+    return instance;
+}
+
+// Конструктор — приватный (вызывается единожды при первой вызове instance())
 Game::Game() : p1("Игрок 1"), p2("Игрок 2") {
     setupMarket();
 }
@@ -24,12 +31,12 @@ void Game::refillMarket() {
 
 void Game::showStatus() {
     std::cout << "\n=== Состояние игры ===\n";
-    std::cout << p1.name << " | Влияние: " << p1.influence 
+    std::cout << p1.name << " | Влияние: " << p1.influence
               << " | Колода: " << p1.deck.size()
               << " | Сброс: " << p1.discard.size()
               << " | Карты в руке: " << p1.hand.size() << "\n";
 
-    std::cout << p2.name << " | Влияние: " << p2.influence 
+    std::cout << p2.name << " | Влияние: " << p2.influence
               << " | Колода: " << p2.deck.size()
               << " | Сброс: " << p2.discard.size()
               << " | Карты в руке: " << p2.hand.size() << "\n";
@@ -89,7 +96,7 @@ void Game::playerTurn(Player &pl, Player &opponent) {
             pl.combatRes += card->combat;
             pl.influence += card->influence;
             pl.discard.push_back(std::move(card));
-            std::cout << "Карта сыграна. Торговля: " << pl.tradeRes 
+            std::cout << "Карта сыграна. Торговля: " << pl.tradeRes
                       << " | Атака: " << pl.combatRes << "\n";
         } else {
             std::cout << "Пропуск розыгрыша.\n";
@@ -115,8 +122,8 @@ void Game::playAll(Player &pl) {
     }
     pl.hand.clear();
 
-    std::cout << "Все карты сыграны! Торговля: " << pl.tradeRes 
-              << " | Атака: " << pl.combatRes 
+    std::cout << "Все карты сыграны! Торговля: " << pl.tradeRes
+              << " | Атака: " << pl.combatRes
               << " | Влияние: +" << pl.influence << "\n";
 }
 
